@@ -4,13 +4,13 @@ import neopixel
 
 
 def on(brightness=0.1):
-    pixels = neopixel.NeoPixel(board.D21, 24, brightness=brightness)
+    pixels = neopixel.NeoPixel(board.D10, 24, brightness=brightness)
     pixels.fill((255, 0, 0))
     print(f"WiggleLight: On, brightness = {brightness}")
 
 
 def off():
-    pixels = neopixel.NeoPixel(board.D21, 24)
+    pixels = neopixel.NeoPixel(board.D10, 24)
     pixels.show()
     print(f"WiggleLight: Off")
 
