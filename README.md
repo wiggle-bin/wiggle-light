@@ -1,5 +1,13 @@
 # WiggleLight
 
+## Prepare Raspberry PI
+
+Turn on SPI
+
+```
+sudo raspi-config 
+```
+
 ## Use WiggleLight CLI
 
 ```
