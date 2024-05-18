@@ -2,10 +2,17 @@
 
 ## Prepare Raspberry PI
 
-Turn on SPI
+In `/boot/firmware/config.txt` add the following:
 
 ```
-sudo raspi-config 
+dtparam=spi=on
+enable_uart=1
+```
+
+Reboot the Raspberry Pi via terminal
+
+```
+sudo reboot
 ```
 
 ## Use WiggleLight CLI

@@ -16,8 +16,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  'rpi_ws281x',
-  'adafruit-circuitpython-neopixel',
+  'adafruit-circuitpython-neopixel-spi',
 ]
 
 [project.scripts]

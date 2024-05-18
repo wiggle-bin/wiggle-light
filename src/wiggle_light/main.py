@@ -1,16 +1,28 @@
 import argparse
 import board
-import neopixel
+import neopixel_spi as neopixel
 
+spi = board.SPI()
 
-def on(brightness=0.1):
-    pixels = neopixel.NeoPixel(board.D10, 24, brightness=brightness)
+NUM_PIXELS = 24
+PIXEL_ORDER = neopixel.GRB
+
+pixels = neopixel.NeoPixel_SPI(spi,
+                               NUM_PIXELS,
+                               pixel_order=PIXEL_ORDER,
+                               auto_write=False)
+
+default_brightness = 0.2
+
+def on(brightness=default_brightness):
+    pixels.brightness = brightness
     pixels.fill((255, 0, 0))
+    pixels.show()
     print(f"WiggleLight: On, brightness = {brightness}")
 
 
 def off():
-    pixels = neopixel.NeoPixel(board.D10, 24)
+    pixels.fill((0, 0, 0))
     pixels.show()
     print(f"WiggleLight: Off")
 
@@ -22,7 +34,7 @@ def main():
 
     light = parser.add_argument_group("light")
     light.add_argument(
-        "--on", nargs="?", const=0.1, help="light intensity from 0.01 to 1", type=float
+        "--on", nargs="?", const=default_brightness, help="light intensity from 0.01 to 1", type=float
     )
     light.add_argument("--off", action="store_true", help="turn light off")
 
